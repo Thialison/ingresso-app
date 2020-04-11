@@ -6,7 +6,7 @@ Como interessado no app ingresso.com
 Quero cadastrar-me
 Para ter acesso a todas as funcionalidades
 
-@cadastro
+@cadastro @reset
 Cenário: Realizar cadastro com sucesso
  Dado que estou na tela minha conta
  Quando acesso a tela de cadastro 

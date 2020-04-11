@@ -7,10 +7,8 @@ module Utils
   end
 
   def app_available?
-    begin
-      File.file?(app_path)
-    rescue
-      false
-    end
+    File.file?(app_path)
+  rescue StandardError
+    false
   end
 end

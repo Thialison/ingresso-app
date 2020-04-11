@@ -22,12 +22,12 @@ Before do |scenario|
   driver.start_driver
 end
 
-AfterStep do |scenario|
+AfterStep do
   @num += 1
   screenshot("./report/#{@num}_#{@scenario}_#{ENV['PLATFORM']}.png")
   embed("./report/#{@num}_#{@scenario}_#{ENV['PLATFORM']}.png", 'image/png')
 end
 
-After do |scenario|
+After do
   driver.driver_quit
 end
