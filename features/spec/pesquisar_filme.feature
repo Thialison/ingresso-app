@@ -10,6 +10,13 @@ Contexto: Abrir tela inicial do App
   Dado que estou na tela inicial do app
 
 @pesquisar
+Cenário: Pesquisar por filmes em Breve
+ Quando acesso o menu de filmes
+ E pesquiso por um filme da lista
+ E acesso o filme
+ Então devo visualizar suas informações
+
+@pesquisar @bdd
 Esquema do Cenário: Pesquisar por um filme em Breve
  Quando acesso o menu de filmes
  E pesquiso pelo "<nome_filme>"

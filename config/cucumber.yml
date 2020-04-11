@@ -1,2 +1,2 @@
-default: --no-source --color --format pretty
-report: -p default -f html -o features/relatorio.html -f json -o report/cucumber-results.json
+default: --no-source --color --format pretty -t 'not @bdd'
+report: -p default -f html -o report/relatorio.html -f json -o report/cucumber-results.json

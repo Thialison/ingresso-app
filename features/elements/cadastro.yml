@@ -3,4 +3,18 @@ android:
     id: loading_progress_bar
   painel_finalizacao_cadastro:
     id: topPanel
+  cep_ok:
+    class_name: android.widget.Button
+  campos_cadastro:
+    class_name: android.widget.EditText
+  select_genero:
+    class_name: android.widget.Spinner
+  checks_genero:
+    class_name: android.widget.CheckedTextView
+  privacy_check:
+    class_name: android.widget.CheckBox
+  continuar_btn:
+    class_name: android.widget.Button
+  texto_cadastro_pronto:
+    class_name: android.widget.TextView
 ios:

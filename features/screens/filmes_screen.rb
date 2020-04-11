@@ -14,18 +14,20 @@ class FilmesScreen < BaseScreen
     find_exact(filmes_em_breve.values[0]).click
   end
 
-  def pesquisar_filme(nome_filme)
-    find_by_element(pesquisar).click
-    find_by_element(buscar_filme).send_keys nome_filme
-  end
-
   def acessar_filme
+    pesquisar_filme
     find_by_element(nome_filme).click
   end
 
-  def validar_detalhes_filme(diretor, data_estreia, elenco)
-    expect(find_by_element(nome_diretor).text).to eq diretor
-    expect(find_by_element(texto_data_estreia).text).to eq data_estreia
-    expect(find_by_element(conteudo_elenco).text).to eq elenco
+  def pesquisar_filme
+    filmes = find_elements(lista_filmes)
+    lista_filmes = filmes.map {|filme| filme.text }
+    find_by_element(pesquisar).click
+    @nome_filme = lista_filmes.shuffle.first
+    find_by_element(buscar_filme).send_keys @nome_filme
+  end
+
+  def validar_info_filme
+    expect(find_by_element(titulo_filme).text).to eq @nome_filme
   end
 end

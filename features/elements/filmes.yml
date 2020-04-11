@@ -7,8 +7,12 @@ android:
     id: loading_progress_bar
   buscar_filme:
     id: search_src_text
+  lista_filmes:
+    id: movie_name
   nome_filme:
     id: movie_name
+  titulo_filme:
+    id: textview_local_name_content
   conteudo_elenco:
     id: textview_cast_content
   nome_diretor:

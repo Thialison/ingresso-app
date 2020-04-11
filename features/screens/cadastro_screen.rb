@@ -10,15 +10,15 @@ class CadastroScreen < BaseScreen
   end
 
   def preencher_dados_validos
-    edit_texts = find_elements(:class_name, 'android.widget.EditText')
+    edit_texts = find_elements(campos_cadastro)
     preenche_basico_info(edit_texts)
     escolher_genero
     edit_texts[4].send_keys CPF.generate
     edit_texts[5].send_keys '011'
     edit_texts[6].send_keys Faker::PhoneNumber.cell_phone
     preenche_endereco(edit_texts)
-    find_elements(:class_name, 'android.widget.CheckBox')[1].click
-    find_element(:class_name, 'android.widget.Button').click
+    find_elements(privacy_check)[1].click
+    find_by_element(continuar_btn).click
   end
 
   def preenche_basico_info(campos)
@@ -30,13 +30,13 @@ class CadastroScreen < BaseScreen
 
   def escolher_genero
     genero = rand(1..2)
-    find_element(:class_name, 'android.widget.Spinner').click
-    find_elements(:class_name, 'android.widget.CheckedTextView')[genero].click
+    find_by_element(select_genero).click
+    find_elements(checks_genero)[genero].click
   end
 
   def preenche_endereco(campos)
     campos[7].send_keys '05425020'
-    find_element(:class_name, 'android.widget.Button').click
+    find_by_element(cep_ok).click
     deslizar_para_baixo
     campos[9].send_keys rand(1..999)
   end
@@ -55,6 +55,6 @@ class CadastroScreen < BaseScreen
 
   def cadastro_realizado_com_sucesso?
     find_by_element(painel_finalizacao_cadastro)
-    expect(find_element(:class_name, 'android.widget.TextView').text).to eq 'Pronto!'
+    expect(find_by_element(texto_cadastro_pronto).text).to eq 'Pronto!'
   end
 end
