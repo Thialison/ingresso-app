@@ -14,7 +14,7 @@ class CadastroScreen < BaseScreen
     preenche_basico_info(edit_texts)
     escolher_genero
     edit_texts[4].send_keys CPF.generate
-    edit_texts[5].send_keys '011'
+    edit_texts[5].send_keys DATA[:cadastro][:ddd]
     edit_texts[6].send_keys Faker::PhoneNumber.cell_phone
     preenche_endereco(edit_texts)
     find_elements(privacy_check)[1].click
@@ -35,7 +35,7 @@ class CadastroScreen < BaseScreen
   end
 
   def preenche_endereco(campos)
-    campos[7].send_keys '05425020'
+    campos[7].send_keys DATA[:cadastro][:cep]
     find_by_element(cep_ok).click
     deslizar_para_baixo
     campos[9].send_keys rand(1..999)
@@ -55,6 +55,6 @@ class CadastroScreen < BaseScreen
 
   def cadastro_realizado_com_sucesso?
     find_by_element(painel_finalizacao_cadastro)
-    expect(find_by_element(texto_cadastro_pronto).text).to eq 'Pronto!'
+    expect(find_by_element(texto_cadastro_pronto).text).to eq DATA[:cadastro][:sucesso]
   end
 end
