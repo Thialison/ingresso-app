@@ -1,0 +1,18 @@
+android:
+  pesquisar:
+    id: action_search
+  filmes_em_breve:
+    text: EM BREVE
+  carregamento:
+    id: loading_progress_bar
+  buscar_filme:
+    id: search_src_text
+  nome_filme:
+    id: movie_name
+  conteudo_elenco:
+    id: textview_cast_content
+  nome_diretor:
+    id: textview_direction_content
+  texto_data_estreia:
+    id: textview_premiere_date
+ios:

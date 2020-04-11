@@ -1,0 +1,6 @@
+android:
+  toolbar_minha_conta:
+    id: toolbar_title
+  criar_conta_entrar:
+    id: text_sign_up_button
+ios:

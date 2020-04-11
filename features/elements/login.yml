@@ -1,0 +1,6 @@
+android:
+  logo_ingresso:
+    id: image_logo_ingresso
+  botao_criar_conta:
+    id: sign_up_button
+ios:

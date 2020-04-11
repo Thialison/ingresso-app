@@ -1,0 +1,6 @@
+android:
+  carregamento:
+    id: loading_progress_bar
+  painel_finalizacao_cadastro:
+    id: topPanel
+ios:

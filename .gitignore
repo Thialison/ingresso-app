@@ -1,0 +1,6 @@
+*.apk
+*.png
+.byebug_history
+*.DS_Store
+*.html
+*.json

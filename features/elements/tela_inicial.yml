@@ -1,0 +1,11 @@
+android:
+  proximas_sessoes:
+    id: textview_next_sessions
+  meus_pedidos:
+    id: image_order_list
+  menu_filmes:
+    id: tab_movie
+  menu_minha_conta:
+    id: tab_account
+ios:
+  

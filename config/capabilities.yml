@@ -1,0 +1,12 @@
+android:
+  caps:
+    project: 'Ingresso.com Teste App'
+    automationName: "UiAutomator2"
+    platformName: "Android"
+    deviceName: <%= ENV['DEVICE'] %>
+    app: <%= ENV['APP'] %>
+    appPackage: com.ingresso.cinemas
+    autoGrantPermissions: true
+    newCommandTimeout: 3000
+  appium_lib:
+    server_url: <%= ENV['SERVER'] %>
