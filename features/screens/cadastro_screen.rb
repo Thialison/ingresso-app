@@ -11,22 +11,40 @@ class CadastroScreen < BaseScreen
 
   def preencher_dados_validos
     edit_texts = find_elements(:class_name, 'android.widget.EditText')
-    edit_texts[0].send_keys Faker::DcComics.hero
-    edit_texts[1].send_keys Faker::Internet.email
-    edit_texts[2].send_keys 'password@1'
-    edit_texts[3].send_keys '12/03/1990'
-    find_element(:class_name, 'android.widget.Spinner').click
-    find_elements(:class_name, 'android.widget.CheckedTextView')[1].click
+    preenche_basico_info(edit_texts)
+    escolher_genero
     edit_texts[4].send_keys CPF.generate
     edit_texts[5].send_keys '011'
     edit_texts[6].send_keys Faker::PhoneNumber.cell_phone
-    edit_texts[7].send_keys '05425020'
+    preenche_endereco(edit_texts)
+    find_elements(:class_name, 'android.widget.CheckBox')[1].click
+    find_element(:class_name, 'android.widget.Button').click
+  end
+
+  def preenche_basico_info(campos)
+    campos[0].send_keys Faker::DcComics.hero
+    campos[1].send_keys Faker::Internet.email
+    campos[2].send_keys Faker::Lorem.word
+    campos[3].send_keys gera_data
+  end
+
+  def escolher_genero
+    genero = rand(1..2)
+    find_element(:class_name, 'android.widget.Spinner').click
+    find_elements(:class_name, 'android.widget.CheckedTextView')[genero].click
+  end
+
+  def preenche_endereco(campos)
+    campos[7].send_keys '05425020'
     find_element(:class_name, 'android.widget.Button').click
     deslizar_para_baixo
-    find_elements(:class_name, 'android.widget.CheckBox')[1].click
-    edit_texts[9].send_keys rand(1..999)
-    find_element(:class_name, 'android.widget.Button').click
-    byebug
+    campos[9].send_keys rand(1..999)
+  end
+
+  def gera_data
+    ano = rand(1970..2001)
+    data = Date.strptime("13-10-#{ano}", '%d-%m-%Y')
+    data_formatada = "#{data.day}/#{data.month}/#{data.year}"
   end
 
   def deslizar_para_baixo
@@ -35,7 +53,7 @@ class CadastroScreen < BaseScreen
     swipe(start_x: cords.width / 2, start_y: cords.height * 0.6, end_x: cords.width / 2, end_y: cords.height * 0.4)
   end
 
-  def cadastro_realizad_com_sucesso?
+  def cadastro_realizado_com_sucesso?
     find_by_element(painel_finalizacao_cadastro)
     expect(find_element(:class_name, 'android.widget.TextView').text).to eq 'Pronto!'
   end
